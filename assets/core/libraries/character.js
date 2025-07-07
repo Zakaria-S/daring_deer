@@ -24,6 +24,10 @@ class Character extends Sprite {
         this.idleRowIndex = rowIndex;
     }
 
+    setSpeed(speed) {
+        this.speed = speed;
+    }
+
     update(deltaTime) {
         super.update(deltaTime);
         this.x += this.vx;

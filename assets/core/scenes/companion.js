@@ -5,7 +5,7 @@ class Companion extends Character {
     }
 
     update(deltaTime) {
-        if (Math.abs(this.following.x - this.x) > (this.frameWidth + this.following.frameWidth)) {
+        if (Math.abs(this.following.x - this.x) > (this.frameWidth + (this.following.frameWidth / 2))) {
             let sign = ((this.following.x - this.x) < 0) ? -1 : 1;
             this.vx = sign * this.speed;
             this.facing = sign;
@@ -16,9 +16,10 @@ class Companion extends Character {
                 this.frameDuration = 100;
             }
         } else {
+            this.vx = 0;
             if (this.status !== 'idle') {
                 this.status = 'idle';
-                this.setAnimationRow(this.runRowIndex);
+                this.setAnimationRow(this.idleRowIndex);
                 this.frameDuration = 200;
             }
         }
